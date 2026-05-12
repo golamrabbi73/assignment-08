@@ -86,13 +86,13 @@ const Navbar = () => {
           <ul className="menu bg-base-200 min-h-full w-80 p-4 space-y-3">
             {/* Sidebar content here */}
             <li>
-              <Navlink href='/'>Home</Navlink>
+              <Navlink href='/' onClick={() => document.getElementById("mobile-drawer").click()}>Home</Navlink>
             </li>
             <li>
-              <Navlink href="/all-tiles">All Tiles</Navlink>
+              <Navlink href="/all-tiles" onClick={() => document.getElementById("mobile-drawer").click()}>All Tiles</Navlink>
             </li>
             <li>
-              <Navlink href="/my-profile">My Profile</Navlink>
+              <Navlink href="/my-profile" onClick={() => document.getElementById("mobile-drawer").click()}>My Profile</Navlink>
             </li>
 
             {
@@ -109,12 +109,14 @@ const Navbar = () => {
                     <span>{user?.name}</span>
                   </div>
 
-                  <button
-                    className="btn btn-error mt-2"
-                    onClick={handleLogout}
-                  >
-                    Logout
-                  </button>
+                  <li>
+                    <button
+                      className="btn btn-error mt-2"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </button>
+                  </li>
                 </>
               ) : (
                   <Link className="btn btn-primary" href={"/login"}>
