@@ -33,25 +33,28 @@ const RegisterPage = () => {
   }
   return (
     <>
-      <div className='container mx-auto flex min-h-[80vh] justify-center items-center bg-slate-100'>
-        <form onSubmit={handleSubmit(handleRegisterFunc)} className="fieldset bg-white border-base-300 rounded-box w-xs border p-4">
+      <div className='flex min-h-screen justify-center items-center bg-slate-100 px-4'>
+        <form onSubmit={handleSubmit(handleRegisterFunc)} className="fieldset bg-white border-base-300 rounded-2xl shadow-xl w-full max-w-md border p-8">
           <legend className="text-2xl font-bold text-center">Register</legend>
+          <p className='text-center text-sm text-gray-500 mb-4'>
+            Create your account to continue
+          </p>
 
           <label className="label text-black font-bold">Name</label>
-          <input type="text"  className="input bg-slate-100" placeholder="Type here name" {...register("name", { required: "Eame field is required" })} />
+          <input type="text"  className="input input-bordered w-full bg-slate-100" placeholder="Type here name" {...register("name", { required: "Eame field is required" })} />
           {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
           <label className="label text-black font-bold">Photo URL</label>
-          <input type="text" className="input bg-slate-100" placeholder="Type here photo url" {...register("photo", { required: "Photo URL field is required" })}/>
+          <input type="text" className="input input-bordered w-full bg-slate-100" placeholder="Type here photo url" {...register("photo", { required: "Photo URL field is required" })}/>
           {errors.photo && <p className='text-red-500'>{errors.photo.message}</p>}
 
           <label className="label text-black font-bold">Email</label>
-          <input type="email"  className="input bg-slate-100" placeholder="Email" {...register("email", { required: "Email field is required" })} />
+          <input type="email"  className="input input-bordered w-full bg-slate-100" placeholder="Email" {...register("email", { required: "Email field is required" })} />
           {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
           <label className="label text-black font-bold">Password</label>
           <fieldset className='fieldset relative'>
             <input
             type={isShowPassword ? "text" : "password"}
-            className="input bg-slate-100" 
+            className="input input-bordered w-full bg-slate-100" 
             placeholder="Password" {...register("password", { required: "Password field is required" })}/>
             <span className="absolute right-2 top-4 cursor-pointer" onClick={() => setIsShowPassword(!isShowPassword)}>
               {isShowPassword ? <FaEye /> : <FaEyeSlash />}
@@ -59,7 +62,13 @@ const RegisterPage = () => {
           </fieldset>
           {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
 
-          <button className="btn btn-neutral mt-4">Register</button>
+          <button className="btn btn-primary w-full mt-4">Register</button>
+          <p className='text-center text-sm mt-4'>
+            Already have an account?
+            <Link href={"/login"} className='text-primary ml-1'>
+              Login
+            </Link>
+          </p>
         </form>
       
       </div>

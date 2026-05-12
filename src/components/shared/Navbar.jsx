@@ -22,9 +22,9 @@ const Navbar = () => {
           type="checkbox"
           id="mobile-drawer"
           className="drawer-toggle"/>
-        <div className="drawer-content">
-          <nav className="navbar sticky top-0 z-50 bg-base-100 shadow-sm">
-            <div className="w-full flex items-center justify-between">
+        <div className="drawer-content pt-21">
+          <nav className="navbar fixed top-0 z-50 bg-base-100 shadow-sm">
+            <div className="w-full flex items-center justify-between px-4 py-3">
               
               {/* left logo */}
               <div>
@@ -99,17 +99,22 @@ const Navbar = () => {
               user? (
                 <>
                   <div className="flex items-center gap-3 px-2">
-                    <Image
-                      src={user?.image || userAvatar}
-                      alt="User avatar"
-                      width={40}
-                      height={40}
-                      className="rounded-full"
-                    />
+                    <Link
+                      href={"/my-profile"}
+                      onClick={() => document.getElementById("mobile-drawer").click()}
+                    >
+                      <Image
+                        src={user?.image || userAvatar}
+                        alt="User avatar"
+                        width={40}
+                        height={40}
+                        className="rounded-full"
+                      />
+                    </Link>
                     <span>{user?.name}</span>
                   </div>
 
-                  <li>
+                  <li onClick={() => document.getElementById("mobile-drawer").click()}>
                     <button
                       className="btn btn-error mt-2"
                       onClick={handleLogout}
@@ -119,7 +124,10 @@ const Navbar = () => {
                   </li>
                 </>
               ) : (
-                  <Link className="btn btn-primary" href={"/login"}>
+                  <Link
+                   className="btn btn-primary" href={"/login"}
+                   onClick={() => document.getElementById("mobile-drawer").click()}
+                  >
                     Login
                   </Link>
                 )
