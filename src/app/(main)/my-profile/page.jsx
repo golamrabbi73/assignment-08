@@ -39,7 +39,7 @@ const MyProfile = () => {
         <div className="bg-base-100 w-full shadow-xl rounded-2xl max-w-md p-5 sm:p-8">
             <div className="flex flex-col items-center p-8">
                 <Image
-                    src={user?.image}
+                    src={user?.image || "/assets/user.png"}
                     alt='User image'
                     width={100}
                     height={100}
@@ -48,7 +48,7 @@ const MyProfile = () => {
                 <h1 className="text-2xl sm:text-3xl font-bold mt-4 text-center">My Profile</h1>
             </div>
 
-            <div className='space-y-4 mt-8'>
+            <div className='space-y-4'>
                 <div className="bg-base-200 p-4 rounded-xl break-w">
                     <p className='text-gray-500 text-sm'>
                         Name

@@ -1,7 +1,6 @@
 "use client";
 import { Menu } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
-import userAvatar from "@/assest/user.png";
 import Link from "next/link";
 import Image from "next/image";
 import Navlink from "./Navlink";
@@ -50,7 +49,7 @@ const Navbar = () => {
                     <h3>Hello, {user?.name}</h3>
                     <Link href={"/my-profile"}>
                       <Image
-                      src={user?.image || userAvatar} 
+                      src={user?.image || "/assets/user.png"} 
                       alt="User avatar" 
                       width={40}
                       height={40}
@@ -105,7 +104,7 @@ const Navbar = () => {
                       onClick={() => document.getElementById("mobile-drawer").click()}
                     >
                       <Image
-                        src={user?.image || userAvatar}
+                        src={user?.image || "/assets/user.png"}
                         alt="User avatar"
                         width={40}
                         height={40}
