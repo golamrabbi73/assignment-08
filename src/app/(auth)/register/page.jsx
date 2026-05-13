@@ -1,6 +1,7 @@
 'use client';
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -10,6 +11,8 @@ const RegisterPage = () => {
   const {register, handleSubmit, formState: {errors}} = useForm();
 
   const [isShowPassword, setIsShowPassword] = useState(false);
+
+  const router = useRouter();
 
   const handleRegisterFunc = async(data) => {
 
@@ -22,13 +25,15 @@ const RegisterPage = () => {
       image: photo,
       callbackURL: "/",
     })
-    console.log(data, error);
+    
     if(error){
       alert(error.message)
     }
 
     if(res){
-      alert('Signup successful')
+      alert('Signup successful');
+
+      router.push("/")
     }
   }
   return (
@@ -62,7 +67,11 @@ const RegisterPage = () => {
           </fieldset>
           {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
 
-          <button className="btn btn-primary w-full mt-4">Register</button>
+          <button
+            className="btn btn-primary w-full mt-4">
+            
+              Register
+          </button>
           <p className='text-center text-sm mt-4'>
             Already have an account?
             <Link href={"/login"} className='text-primary ml-1'>

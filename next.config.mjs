@@ -7,6 +7,11 @@ const nextConfig = {
     remotePatterns:[
       {
         protocol: "https",
+        hostname: "assignment08-server.onrender.com",
+      },
+
+      {
+        protocol: "https",
         hostname: "***",
       },
     ],
