@@ -91,7 +91,7 @@ const AllTilesPage = () => {
                                     href={`/tiles/${tile.id}`}
                                     className='btn btn-primary btn-block mt-3 w-full text-white py-2 rounded-lg hover:bg-gray-800 text-sm md:text-base'
                                 >
-                                    View Details
+                                    Details
                                 </Link>
                             </div>
                         </div>
