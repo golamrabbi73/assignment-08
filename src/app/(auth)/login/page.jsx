@@ -2,11 +2,11 @@
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation';
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-const LoginPage = () => {
+function LoginContent () {
 
   const {register, handleSubmit, formState: {errors}} = useForm();
 
@@ -97,5 +97,11 @@ console.log(res, error)
     </>
   )
 }
-
+const LoginPage = () => {
+  return(
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginContent />
+    </Suspense>
+  )
+}
 export default LoginPage
