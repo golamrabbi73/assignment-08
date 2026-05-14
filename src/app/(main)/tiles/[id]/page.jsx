@@ -37,11 +37,13 @@ const TileDetailsPage = async({ params }) => {
 
 
     const tile = await getSingletile(id);
+    console.log(tile.inStock)
+    console.log(typeof tile.inStock)
     
 
 
   return (
-    <section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14'>
+    <section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8'>
         {/* heading */}
         <div className='mb-8 lg:mb-14 text-center'>
             <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold'>Tile Details</h1>
@@ -51,12 +53,12 @@ const TileDetailsPage = async({ params }) => {
         {/* container */}
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-14 items-stretch'>
             {/* left image */}
-            <div className='overflow-hidden rounded-2xl lg:rounded-3xl shadow-xl group bg-base-200 h-[300px] sm:h-[450px] lg:h-[650px]'>
+            <div className='overflow-hidden rounded-2xl lg:rounded-3xl shadow-xl group bg-base-200 h-[300px] sm:h-[450px] lg:h-[600px]'>
                 <Image
                     src={tile?.image}
                     alt={tile?.title}
-                    width={700}
-                    height={700}
+                    width={500}
+                    height={500}
                     className="
                         w-full
                         h-full
@@ -70,24 +72,25 @@ const TileDetailsPage = async({ params }) => {
 
             {/* right details info */}
             <div className='w-full'>
-                <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-3'>{tile?.title}</h2>
-                <p className='text-sm sm:text-base lg:text-lg text-gray-500 mb-5 lg:mb-7'>By {tile?.creator}</p>
-                <h3 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-6 lg:mb-8'>
+                <h2 className='text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight'>{tile?.title}</h2>
+                <p className='text-sm sm:text-base lg:text-lg text-gray-500'>By {tile?.creator}</p>
+                
+                <h3 className='text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mt-4 mb-6 lg:mb-8'>
                     {tile?.currency} {tile?.price}
                 </h3>
 
                 <div className='space-y-4 sm:space-y-5 text-sm sm:text-base lg:text-lg'>
                     <div className='flex items-center justify-between border-b border-base-300 pb-3'>
-                        <span className='font-semibold'>
+                        <span className='text-lg sm:text-xl font-semibold'>
                             Category
                         </span>
-                        <span className='capitalize'>
+                        <span className='capitalize text-lg'>
                             {tile.category}
                         </span>
                     </div>
 
                     <div className='flex items-center justify-between border-b border-base-300 pb-3'>
-                        <span className='font-semibold'>
+                        <span className='text-lg sm:text-xl font-semibold'>
                             Stock
                         </span>
                         {
@@ -104,7 +107,7 @@ const TileDetailsPage = async({ params }) => {
                     </div>
 
                     <div className='pt-4'>
-                        <h4 className='text-lg sm:text-xl font-semibold mb-3'>
+                        <h4 className='text-lg sm:text-xl font-semibold mb-1'>
                             Description
                         </h4>
                         <p className='text-gray-600 leading-7 sm:leading-8'>
@@ -112,7 +115,7 @@ const TileDetailsPage = async({ params }) => {
                         </p>
                     </div>
 
-                    <div className='pt-4'>
+                    <div className='pt-3'>
                         <h4 className='text-lg sm:text-xl font-semibold mb-4'>
                             Tags
                         </h4>
