@@ -1,6 +1,7 @@
 'use client';
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -11,13 +12,16 @@ const LoginPage = () => {
 
   const [isShowPassword, setIsShowPassword] = useState(false);
 
+  const searchParams = useSearchParams();
+  const redirectPath = searchParams.get("redirect") || "/";
+
   const handleLoginFunc = async(data) => {
 
     const { data:res, error } = await authClient.signIn.email({
     email: data.email, // required
     password: data.password, // required
     rememberMe: true,
-    callbackURL: "/",
+    callbackURL: redirectPath,
 });
 
 console.log(res, error)
@@ -26,13 +30,14 @@ console.log(res, error)
   const handleGoogleSignIn = async() => {
     const data = await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/"
+      callbackURL: redirectPath
     });
   }
 
   const handleGitHubSignIn = async() => {
     const data = await authClient.signIn.social({
-        provider: "github"
+        provider: "github",
+        callbackURL: redirectPath
     })
   }
 

@@ -4,14 +4,18 @@ import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import Image from "next/image";
 import Navlink from "./Navlink";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
 
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
+  const router = useRouter();
 
   const handleLogout = async () => {
     await authClient.signOut();
+
+    router.refresh();
   }
 
   return (

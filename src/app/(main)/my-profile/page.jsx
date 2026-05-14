@@ -2,7 +2,7 @@
 import { authClient } from '@/lib/auth-client'
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import React, { useEffect } from 'react'
 
 const MyProfile = () => {
@@ -13,7 +13,7 @@ const MyProfile = () => {
     useEffect(() => {
         if(!isPending && !user){
             const timer = setTimeout(() => {
-                router.replace("/login");
+                redirect(`/login?redirect=/my-profile`);
             }, 500);
 
             return () => clearTimeout(timer);
