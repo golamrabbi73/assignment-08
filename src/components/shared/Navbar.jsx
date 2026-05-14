@@ -32,7 +32,7 @@ const Navbar = () => {
               {/* left logo */}
               <div>
                 <Navlink href={"/"}>
-                  <h1 className="text-xl font-bold tracking-wide">
+                  <h1 className="text-3xl font-bold tracking-wide">
                     Tile<span className="text-blue-500">Gallery</span>
                   </h1>
                 </Navlink>
