@@ -35,12 +35,8 @@ const TileDetailsPage = async({ params }) => {
         redirect(`/login?redirect=/tiles/${id}`);
     }
 
-
     const tile = await getSingletile(id);
-    console.log(tile.inStock)
-    console.log(typeof tile.inStock)
     
-
 
   return (
     <section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8'>
