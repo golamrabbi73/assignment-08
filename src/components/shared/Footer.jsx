@@ -106,7 +106,7 @@ const Footer = () => {
                     {/* social links */}
                     <div>
                         <h3 className='text-xl font-semibold mb-5'>
-                            Follo Us
+                            Follow Us
                         </h3>
 
                         <ul className='flex items-center gap-4'>
